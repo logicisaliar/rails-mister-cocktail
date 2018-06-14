@@ -6,6 +6,8 @@
 <%= link_to "Go back", cocktails_path  %>
 <br>
 <br>
-<% @doses.each do |dose| %>
-<p><%= Ingredient.find(dose.ingredient_id).name %>  - <%= dose.description %></p>
+<% @cocktail.doses.each do |dose| %>
+<p><%= dose.ingredient.name %>  - <%= dose.description %> <%= link_to "Delete this ingredient", dose_path(dose.id),
+  method: :delete,
+  data: { confirm: "Are you sure?" }  %> </p>
 <% end %>
