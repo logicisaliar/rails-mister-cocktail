@@ -8,11 +8,15 @@ class CocktailsController < ApplicationController
 
   def create
     @cocktail = Cocktail.new(cocktail_params)
-    redirect_to cockatil_path(@cocktail) if @cocktail.save
-    render :new
+    if @cocktail.save
+      return cocktail_path(@cocktail)
+    else
+      render :new
+    end
   end
 
   def show
+    @doses = Dose.where(cocktail_id: @cocktail.id)
   end
 
   def index
