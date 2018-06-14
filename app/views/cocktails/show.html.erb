@@ -11,3 +11,9 @@
   method: :delete,
   data: { confirm: "Are you sure?" }  %> </p>
 <% end %>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.association :ingredient, include_hidden: false %>
+  <%= f.input :description %>
+  <%= f.submit "Add info", class: "btn" %>
+<% end %>
