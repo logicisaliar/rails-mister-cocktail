@@ -1,25 +1,25 @@
 <div class="container">
-<h1><%= @cocktail.name %></h1>
+  <h1><%= @cocktail.name %></h1>
 
-<!-- @ingredients = Ingredient.all -->
+  <!-- @ingredients = Ingredient.all -->
 
-<br>
-<br>
-<% @cocktail.doses.each do |dose| %>
-<p><%= dose.ingredient.name %>  - <%= dose.description %> <%= link_to "Delete", dose_path(dose.id),
+  <br>
+  <br>
+  <% @cocktail.doses.each do |dose| %>
+  <p><%= dose.ingredient.name %>  - <%= dose.description %> <%= link_to "Delete", dose_path(dose.id),
   method: :delete,
   data: { confirm: "Are you sure?" }  %> </p>
-<% end %>
-<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-<%= image_tag @cocktail.photo.url(:bright_face) %>
-<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <% end %>
+  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+  <%= image_tag @cocktail.photo.url(:bright_face) %>
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
   <%= f.association :ingredient, include_hidden: false %>
   <%= f.input :description %>
   <%= f.submit "Add info", class: "btn" %>
-<% end %>
-<br>
-<%= link_to "Add ingredient and dosage description", new_cocktail_dose_path(@cocktail) %>
-<br>a
-<br>
-<%= link_to "Go back", cocktails_path  %>
+  <% end %>
+  <br>
+  <%= link_to "Add ingredient and dosage description", new_cocktail_dose_path(@cocktail) %>
+  <br>
+  <br>
+  <%= link_to "Go back", cocktails_path  %>
 </div>
