@@ -10,7 +10,6 @@
   method: :delete,
   data: { confirm: "Are you sure?" }  %> </p>
   <% end %>
-  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
   <%= image_tag @cocktail.photo.url(:bright_face) %>
   <%= simple_form_for [@cocktail, @dose] do |f| %>
   <%= f.association :ingredient, include_hidden: false %>

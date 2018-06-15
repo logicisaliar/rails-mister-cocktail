@@ -1,26 +1,27 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://res.cloudinary.com/logicisaliar/image/upload/v1529101646/Cocktails.jpg');">
   <div class="banner-content">
     <h1>Cocktailmania</h1>
     <p>
       <span id="banner-typed-text"></span>
     </p>
 
-    <a class="btn btn-primary btn-lg">Start now</a>
   </div>
 </div>
 
-<%= cl_image_tag(@cocktail.photo,
+
+<%#= cl_image_tag(cocktail.photo,
 width: 400, height: 300, crop: :fill) %>
-<%= cl_image_tag(@cocktail.photo,
-width: 150, height: 150, crop: :thumb, gravity: :face) %>
 
 <div class="container">
-
+  <div class="btn " id="margin-bottom" >
+<%= link_to "Add a new cocktail", new_cocktail_path  %>
+</div>
 
   <div class="row"></div>
   <% @cocktails.each do |cocktail| %>
   <div class="col-xs-12 col-md-4">
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/200/300');">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path(cocktail.photo,
+width: 150, height: 150, crop: :thumb, gravity: :face) %>')">
       <div class="card-category">
         <h2><%= link_to cocktail.name, cocktail_path(cocktail)%> </h2>
       </div>
@@ -35,6 +36,5 @@ width: 150, height: 150, crop: :thumb, gravity: :face) %>
 </div>
 
 
-<%= link_to "Add a new cocktail", new_cocktail_path  %>
 
 
