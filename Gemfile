@@ -29,6 +29,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass', '~> 5.0.9'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
+gem 'figaro'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
