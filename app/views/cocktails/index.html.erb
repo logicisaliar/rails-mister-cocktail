@@ -2,13 +2,17 @@
   <div class="banner-content">
     <h1>Cocktailmania</h1>
     <p>
-  <span id="banner-typed-text"></span>
-</p>
+      <span id="banner-typed-text"></span>
+    </p>
 
     <a class="btn btn-primary btn-lg">Start now</a>
   </div>
 </div>
 
+<%= cl_image_tag("THE_IMAGE_ID_FROM_LIBRARY",
+width: 400, height: 300, crop: :fill) %>
+<%= cl_image_tag("IMAGE_WITH_FACE_ID",
+width: 150, height: 150, crop: :thumb, gravity: :face) %>
 
 <div class="container">
 
