@@ -1,24 +1,42 @@
-<div class="container">
-  <h1><%= @cocktail.name %></h1>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://res.cloudinary.com/logicisaliar/image/upload/v1529101646/Cocktails.jpg');">
+  <div class="container" id="show">
+    <h1><%= @cocktail.name %></h1>
+
+
+  <%= link_to "Go back", cocktails_path  %>
 
   <!-- @ingredients = Ingredient.all -->
+<div class="card">
+  <div class="table-responsive">
+  <table class="table-hover">
+    <tr>
+      <th> <stong>Ingredients   </stong></th>
+      <th><em>Description</em></th>
+      <th>Delete?</th>
+    </tr>
+    <% @cocktail.doses.each do |dose| %>
+      <tr>
+        <td>
+          <%= dose.ingredient.name %> </td>
+          <td> <%= dose.description %> </td>
+          <td> <%= link_to " Delete x", dose_path(dose.id),
+          method: :delete,
+          data: { confirm: "Are you sure?" }  %>
+        </td>
+        </tr>
+      <% end %>
+    </table>
+    </div>
+    </div>
+    <div class="card">
+      <%= image_tag @cocktail.photo.url(:bright_face) %>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.association :ingredient, include_hidden: false %>
+      <%= f.input :description %>
+  <%#= link_to "Add ingredient and dosage description", new_cocktail_dose_path(@cocktail) %>
 
-  <br>
-  <br>
-  <% @cocktail.doses.each do |dose| %>
-  <p><%= dose.ingredient.name %>  - <%= dose.description %> <%= link_to "Delete", dose_path(dose.id),
-  method: :delete,
-  data: { confirm: "Are you sure?" }  %> </p>
-  <% end %>
-  <%= image_tag @cocktail.photo.url(:bright_face) %>
-  <%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.association :ingredient, include_hidden: false %>
-  <%= f.input :description %>
-  <%= f.submit "Add info", class: "btn" %>
-  <% end %>
-  <br>
-  <%= link_to "Add ingredient and dosage description", new_cocktail_dose_path(@cocktail) %>
-  <br>
-  <br>
-  <%= link_to "Go back", cocktails_path  %>
-</div>
+      <%= f.submit "Add info", class: "btn margin-bottom" %>
+      <% end %>
+    </div>
+  </div>
+  </div>
